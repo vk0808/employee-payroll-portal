@@ -60,6 +60,7 @@ window.addEventListener('DOMContentLoaded', () => {
 const save = () => {
   try {
     let employeePayrollData = createEmployeePayroll();
+    createAndUpdateStorage(employeePayrollData);
   } catch (e) {
     return;
   }
@@ -107,4 +108,21 @@ const getInputValueById = (id) => {
 const getInputElementValue = (id) => {
   let value = document.getElementById(id).value;
   return value;
+}
+
+
+// function to get EmployeePayrollData stored in local storage, 
+// parse into JSON, then add to object and finally update local storage
+const createAndUpdateStorage = (employeePayrollData) => {
+  let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+
+  // check if present
+  if (employeePayrollList != undefined) {
+    employeePayrollList.push(employeePayrollData);
+  } else { // else add to object
+    employeePayrollList = [employeePayrollData]
+  }
+  alert(employeePayrollList.toString());
+  // update local storage
+  localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
 }
