@@ -126,3 +126,39 @@ const createAndUpdateStorage = (employeePayrollData) => {
   // update local storage
   localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
 }
+
+// function to reset input fields
+const resetForm = () => {
+  setValue('#name', '');
+  unsetSelectedValues('[name=profile]');
+  unsetSelectedValues('[name=gender]');
+  unsetSelectedValues('[name=department]');
+  setValue('#salary', '');
+  setTextValue('.salary-output', 400000);
+  setTextValue(".text-error", '');
+  setTextValue(".date-error", '');
+  setValue('#notes', '');
+  setValue('#day', '1');
+  setValue('#month', 'Jan');
+  setValue('#year', '2020');
+}
+
+// function to reset checkbox and radio buttons
+const unsetSelectedValues = (propertyValue) => {
+  let allItems = document.querySelectorAll(propertyValue);
+  allItems.forEach(item => {
+    item.checked = false;
+  });
+}
+
+// function to reset innerHTML of the given element
+const setTextValue = (id, value) => {
+  let textError = document.querySelector(id);
+  textError.textContent = value;
+}
+
+// function to reset value of the given element
+const setValue = (id, value) => {
+  const element = document.querySelector(id);
+  element.value = value;
+}
