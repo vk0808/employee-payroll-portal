@@ -55,3 +55,56 @@ window.addEventListener('DOMContentLoaded', () => {
   validateName();
   validateDate();
 });
+
+// function to save to local storage
+const save = () => {
+  try {
+    let employeePayrollData = createEmployeePayroll();
+  } catch (e) {
+    return;
+  }
+}
+
+// function to create employee object and store values by getting it from input fields  
+const createEmployeePayroll = () => {
+  let employeePayrollData = new EmployeePayrollData();
+  try {
+    employeePayrollData.name = getInputValueById('#name');
+  } catch (e) {
+    setTextValue('.text-error', e);
+    throw e;
+  }
+  employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
+  employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
+  employeePayrollData.department = getSelectedValues('[name=department]');
+  employeePayrollData.salary = getInputValueById('#salary');
+  employeePayrollData.note = getInputValueById('#notes');
+  employeePayrollData.id = employPayrollObject._id;
+  let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " + getInputValueById('#year');
+  employeePayrollData.date = Date.parse(date);
+  alert(employeePayrollData.toString());
+  return employeePayrollData;
+}
+
+// Three methods to get value of input field based on class and id
+// 1. Class: function to return values of selected items using querySelectorAll
+const getSelectedValues = (propertyValue) => {
+  let allItems = document.querySelectorAll(propertyValue);
+  let selItems = [];
+  allItems.forEach(item => {
+    if (item.checked) selItems.push(item.value);
+  });
+  return selItems;
+}
+
+// 2. Id: function to return values of selected items using querySelector
+const getInputValueById = (id) => {
+  let value = document.querySelector(id).value;
+  return value;
+}
+
+// 3. Id: function to return values of selected items using getElementById
+const getInputElementValue = (id) => {
+  let value = document.getElementById(id).value;
+  return value;
+}
