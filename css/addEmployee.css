@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 html body {
+  font-family: Roboto;
+  background-color: #eee;
   margin: 0;
   height: 100%;
 }
@@ -40,7 +42,6 @@ html body {
 /* Form */
 .form-content {
   min-height: calc(100%-80px);
-  background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,4 +107,11 @@ html body {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+/* Gender */
+.gender-label {
+  color: #42515f;
+}
+.gender-label #female {
+  margin-left: 2rem;
 }
