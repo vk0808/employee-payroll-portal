@@ -172,6 +172,11 @@ a.button:hover,
   color: white;
 }
 /* Media Queries */
+@media only screen and (min-width: 726px) {
+  .salary-group input{
+    min-width: 350px;
+  }
+}
 @media only screen and (max-width: 600px) {
   .form {
     margin-top: 10px;
