@@ -115,23 +115,33 @@
         <div class="row-content">
           <label class="label text" for="gender">Gender</label>
           <div class="gender-label">
-            <input type="radio" id="male" name="gender" value="Male" required />
-            <label for="Male">Male</label>
-            <input
-              type="radio"
-              id="female"
-              name="gender"
-              value="Female"
-              required
-            />
-            <label for="Female">Female</label>
+            <div class="male-label">
+              <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="Male"
+                required
+              />
+              <label for="Male">Male</label>
+            </div>
+            <div class="female-label">
+              <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="Female"
+                required
+              />
+              <label for="Female">Female</label>
+            </div>
           </div>
         </div>
 
         <!-- Input fields: Department -->
         <div class="row-content">
           <label class="label text" for="department">Department</label>
-          <div>
+          <div class="department-group">
             <input
               type="checkbox"
               id="hr"
@@ -178,17 +188,19 @@
         <!-- Input fields: Salary-->
         <div class="row-content">
           <label class="label text" for="salary">Choose Salary</label>
-          <input
-            class="input"
-            type="range"
-            name="salary"
-            id="salary"
-            min="300000"
-            max="500000"
-            step="100"
-            value="400000"
-          />
-          <output class="salary-output" for="salary">400000</output>
+          <div class="salary-group">
+            <input
+              class="input"
+              type="range"
+              name="salary"
+              id="salary"
+              min="300000"
+              max="500000"
+              step="100"
+              value="400000"
+            />
+            <output class="salary-output" for="salary">400000</output>
+          </div>
         </div>
 
         <!-- Input fields: Date -->
