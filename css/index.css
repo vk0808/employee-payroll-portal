@@ -1,0 +1,39 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 80px);
+  background-color: #eee;
+  padding: 30px 0 10px;
+  box-sizing: border-box;
+}
+.sub-main-content {
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 25px;
+}
+.emp-detail-text {
+  font: normal normal 500 24px/25px Roboto;
+  letter-spacing: 0px;
+  color: #42515f;
+  opacity: 1;
+}
+.emp-count {
+  background-color: #82a70c;
+  color: #ffffff;
+  border-radius: 2rem;
+  font-size: 20px;
+  text-align: center;
+  display: inline-block;
+  padding: 0 0.75rem;
+}
+.add-button {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-button:hover {
+  background-color: #82a70c !important;
+  color: whitesmoke;
+}
