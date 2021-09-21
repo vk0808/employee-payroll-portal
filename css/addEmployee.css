@@ -16,7 +16,6 @@ html body {
   flex-direction: row;
   align-items: center;
   display: flex;
-  border: 0px solid hsl(120, 100%, 25%);
   justify-content: center;
 }
 .logo-content {
@@ -45,7 +44,6 @@ html body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0px solid green;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -55,22 +53,19 @@ html body {
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 8px;
-  opacity: 1;
 }
 .form-head {
   font: normal normal bold 24px/37px Roboto;
-  letter-spacing: 0px;
+  letter-spacing: 1px;
   color: #42515f;
   text-transform: capitalize;
-  opacity: 1;
-  padding-bottom: 20px;
+  padding-bottom: 1.5rem;
 }
 .row-content {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 10px;
-  border: 0px sold green;
+  margin-bottom: 2rem;
 }
 .label {
   min-width: 180px;
@@ -79,7 +74,6 @@ html body {
 .text {
   font-size: 16px;
   color: #42515f;
-  opacity: 1;
   font-family: Roboto;
 }
 .input {
@@ -113,5 +107,24 @@ html body {
   color: #42515f;
 }
 .gender-label #female {
-  margin-left: 2rem;
+  margin-left: 1.85rem;
+}
+/* Department */
+.ch-box {
+  margin-right: 6px;
+}
+.ch-box-label {
+  margin-right: 20px;
+}
+/* Date */
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font: normal normal normal 16px Roboto;
+  letter-spacing: 0px;
+  color: #42515f;
+  background-color: transparent;
+  margin: 0 0.15rem;
 }

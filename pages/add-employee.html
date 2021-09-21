@@ -58,6 +58,7 @@
               <img
                 class="profile"
                 id="image1"
+                alt="profile pictures"
                 src="../assets/profile-images/Ellipse -4.png"
                 required
               />
@@ -72,6 +73,7 @@
               <img
                 id="image2"
                 class="profile"
+                alt="profile pictures"
                 src="../assets/profile-images/Ellipse -2.png"
                 required
               />
@@ -86,6 +88,7 @@
               <img
                 id="image3"
                 class="profile"
+                alt="profile pictures"
                 src="../assets/profile-images/Ellipse -1.png"
                 required
               />
@@ -100,6 +103,7 @@
               <img
                 id="image4"
                 class="profile"
+                alt="profile pictures"
                 src="../assets/profile-images/Ellipse -3.png"
                 required
               />
@@ -108,7 +112,7 @@
         </div>
 
         <!-- Input fields: Gender-->
-        <div class="row-content" style="margin-top: 30px">
+        <div class="row-content">
           <label class="label text" for="gender">Gender</label>
           <div class="gender-label">
             <input type="radio" id="male" name="gender" value="Male" required />
@@ -125,7 +129,7 @@
         </div>
 
         <!-- Input fields: Department -->
-        <div class="row-content" style="margin-top: 30px">
+        <div class="row-content">
           <label class="label text" for="department">Department</label>
           <div>
             <input
@@ -133,54 +137,46 @@
               id="hr"
               name="department"
               value="HR"
-              style="margin-right: 6px"
+              class="ch-box"
             />
-            <label class="text" for="hr" style="margin-right: 20px">HR</label>
+            <label class="text ch-box-label" for="hr">HR</label>
             <input
               type="checkbox"
               id="sales"
               name="department"
               value="Sales"
-              style="margin-right: 6px"
+              class="ch-box"
             />
-            <label class="text" for="sales" style="margin-right: 20px"
-              >Sales</label
-            >
+            <label class="text ch-box-label" for="sales">Sales</label>
             <input
               type="checkbox"
               id="finance"
               name="department"
               value="Finance"
-              style="margin-right: 6px"
+              class="ch-box"
             />
-            <label class="text" for="finance" style="margin-right: 20px"
-              >Finance</label
-            >
+            <label class="text ch-box-label" for="finance">Finance</label>
             <input
               type="checkbox"
               id="engineer"
               name="department"
               value="Engineer"
-              style="margin-right: 6px"
+              class="ch-box"
             />
-            <label class="text" for="engineer" style="margin-right: 20px"
-              >Engineer</label
-            >
+            <label class="text ch-box-label" for="engineer">Engineer</label>
             <input
               type="checkbox"
               id="others"
               name="department"
               value="Others"
-              style="margin-right: 6px"
+              class="ch-box"
             />
-            <label class="text" for="others" style="margin-right: 20px"
-              >Others</label
-            >
+            <label class="text ch-box-label" for="others">Others</label>
           </div>
         </div>
 
         <!-- Input fields: Salary-->
-        <div class="row-content" style="margin-top: 30px">
+        <div class="row-content">
           <label class="label text" for="salary">Choose Salary</label>
           <input
             class="input"
@@ -193,6 +189,72 @@
             value="400000"
           />
           <output class="salary-output" for="salary">400000</output>
+        </div>
+
+        <!-- Input fields: Date -->
+        <div class="row-content">
+          <label class="label text" for="date">Start Date</label>
+          <div>
+            <select id="day" name="Day">
+              <option>Day</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+            </select>
+            <select id="month" name="Month">
+              <option>Month</option>
+              <option value="Jan">January</option>
+              <option value="Feb">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="Aug">August</option>
+              <option value="Sept">September</option>
+              <option value="Oct">October</option>
+              <option value="Nov">November</option>
+              <option value="Dec">December</option>
+            </select>
+            <select id="year" name="Year">
+              <option>Year</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+            </select>
+          </div>
         </div>
       </form>
     </div>
