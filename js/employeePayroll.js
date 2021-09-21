@@ -9,6 +9,11 @@ class EmployeePayrollData {
   get name() {
     return this._name;
   }
+  set name(name) {
+    let pattern = RegExp("^[A-Z]{1}[a-zA-Z\\s]{2,}$");
+    if (pattern.test(name)) this._name = name;
+    else throw "Invalid name: should start with capital & needs to be min. 3 chars";
+  }
 
   get profilePic() {
     return this._profilePic;
@@ -47,6 +52,17 @@ class EmployeePayrollData {
 
   get startDate() {
     return this._startDate;
+  }
+  set startDate(startDate) {
+    let currentDate = new Date();
+    if (startDate > currentDate) {
+      throw "Starting date is a future date";
+    }
+    var diff = Math.abs(currentDate.getTime() - startDate.getTime());
+    if (diff / (1000 * 60 * 60 * 24) > 30) {
+      throw "Starting date is beyond 30 days";
+    }
+    this._startDate = startDate;
   }
 
   toString() {
