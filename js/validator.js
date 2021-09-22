@@ -92,7 +92,7 @@ const setEmployeePayrollObject = () => {
   employeePayrollObject._salary = getInputValueById('#salary');
   employeePayrollObject._note = getInputValueById('#notes');
   let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " + getInputValueById('#year');
-  employeePayrollObject._startDate = Date.parse(date);
+  employeePayrollObject._startDate = new Date(Date.parse(date));
   // alert(employeePayrollData.toString());
 }
 
@@ -249,7 +249,7 @@ const setEmployeePayrollData = (employeePayrollData) => {
   employeePayrollData.salary = employeePayrollObject._salary;
   employeePayrollData.note = employeePayrollObject._note;
   try {
-    employeePayrollData.date = new Date(Date.parse(employeePayrollObject._startDate));
+    employeePayrollData.startDate = new Date(Date.parse(employeePayrollObject._startDate));
   } catch (e) {
     setTextValue('.date-error', e);
     throw e;
