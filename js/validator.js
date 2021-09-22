@@ -1,3 +1,7 @@
+// Global variables
+let isUpdate = false;
+let employPayrollObject = {};
+
 // function to get salary slider output
 function salaryOutput() {
   const salary = document.querySelector('#salary');
@@ -54,6 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
   salaryOutput();
   validateName();
   validateDate();
+  checkForUpdate();
 });
 
 // function to save to local storage
@@ -161,4 +166,42 @@ const setTextValue = (id, value) => {
 const setValue = (id, value) => {
   const element = document.querySelector(id);
   element.value = value;
+}
+
+// function to check if there is any update array present inside object of local storage
+const checkForUpdate = () => {
+  const jsonData = localStorage.getItem('edit-emp');
+  isUpdate = jsonData ? true : false;
+  if (!isUpdate) return;
+  employPayrollObject = JSON.parse(jsonData);
+  setForm();
+}
+
+// function to set all the input fields with corresponding values of that element
+const setForm = () => {
+  setValue('#name', employPayrollObject._name);
+  setSelectedValue('[name = profile]', employPayrollObject._profilePic);
+  setSelectedValue('[name = gender]', employPayrollObject._gender);
+  setSelectedValue('[name = department]', employPayrollObject._department);
+  setValue('#salary', employPayrollObject._salary);
+  setTextValue('.salary-output', employPayrollObject._salary);
+  let date = stringifyDate(employPayrollObject._startDate).split(" ");
+  setValue('#day', date[0]);
+  setValue('#month', date[1]);
+  setValue('#year', date[2]);
+  setValue('#notes', employPayrollObject._note);
+}
+
+// function to set checkbox and radio buttons by selecting the values of that element
+const setSelectedValue = (propertyValue, value) => {
+  let allItem = document.querySelectorAll(propertyValue);
+  allItem.forEach(item => {
+    if (Array.isArray(value)) {
+      if (value.includes(item.value)) {
+        item.checked = true;
+      }
+    } else if (item.value === value) {
+      item.checked = true;
+    }
+  });
 }

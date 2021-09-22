@@ -1,3 +1,4 @@
+// Global variables
 let empPayrollList;
 
 // function to get employee data stored in local storage and parse it into JSON 
@@ -62,7 +63,9 @@ const getDepartmentHtml = (data) => {
 
 // function to remove an existing employee
 const remove = (node) => {
+  // check if the element is present in array
   let employeeData = empPayrollList.find(empData => empData._id == node.id);
+  // if not exit and do nothing
   if (!employeeData) {
     return;
   }
@@ -72,4 +75,18 @@ const remove = (node) => {
   localStorage.setItem('EmployeePayrollList', JSON.stringify(empPayrollList));
   document.querySelector('.emp-count').textContent = empPayrollList.length;
   createInnerHtml();
+}
+
+// function to update an existing employee
+const update = (node) => {
+  // check if the element is present in array
+  let employeeData = empPayrollList.find(empData => empData._id == node.id);
+  // if not exit and do nothing
+  if (!employeeData) {
+    return;
+  }
+  // else, set it to local storage by creating new array inside object
+  localStorage.setItem('edit-emp', JSON.stringify(employeeData));
+  // then move to add-employee.html page
+  window.location.replace(site_properties.add_employee_page);
 }
