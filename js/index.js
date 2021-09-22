@@ -60,3 +60,16 @@ const getDepartmentHtml = (data) => {
   return deptHtml;
 }
 
+// function to remove an existing employee
+const remove = (node) => {
+  let employeeData = empPayrollList.find(empData => empData._id == node.id);
+  if (!employeeData) {
+    return;
+  }
+  // get index of the employee, splice, set it to local storage and then update the table
+  const index = empPayrollList.map(empData => empData._id).indexOf(employeeData._id);
+  empPayrollList.splice(index, 1);
+  localStorage.setItem('EmployeePayrollList', JSON.stringify(empPayrollList));
+  document.querySelector('.emp-count').textContent = empPayrollList.length;
+  createInnerHtml();
+}
