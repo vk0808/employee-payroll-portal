@@ -1,12 +1,32 @@
+let empPayrollList;
+
+// function to get employee data stored in local storage and parse it into JSON 
+const getDataFromLocalStorage = () => {
+  return localStorage.getItem('EmployeePayrollList') ?
+    JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
+
+
 // add eventListener as the page loads
 window.addEventListener('DOMContentLoaded', (event) => {
+  // get data from local storage
+  empPayrollList = getDataFromLocalStorage();
+  // update count
+  document.querySelector('.emp-count').textContent = empPayrollList.length;
+  // create row for each employee 
   createInnerHtml();
+
+  localStorage.removeItem("edit-emp");
 });
+
 
 // function to create table and append it to the innerHTML 
 const createInnerHtml = () => {
   // column headings
   const headerHtml = "<tr><th></th><th>Name</th><th>Gender</th>" + "<th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th></tr>";
+
+  // if (empPayrollList.length == 0) return;
+
   // add table header 
   let innerHtml = `${headerHtml}`;
   // read from JSON object
@@ -21,7 +41,7 @@ const createInnerHtml = () => {
         <td>${empPayrollData._gender}</td>
         <td>${getDepartmentHtml(empPayrollData._department)}</td>
         <td>${empPayrollData._salary}</td>
-        <td>${empPayrollData._startDate}</td>
+        <td>${stringifyDate(empPayrollData._startDate)}</td>
         <td>
           <img id ="${empPayrollData._id}" src="../assets/icons/delete-black-18dp.svg" alt="Delete" onClick="remove(this)">
           <img id ="${empPayrollData._id}" src="../assets/icons/create-black-18dp.svg" alt="Edit" onClick="update(this)">
@@ -72,3 +92,4 @@ const getDepartmentHtml = (data) => {
   }
   return deptHtml;
 }
+
