@@ -91,3 +91,8 @@ td img {
   font-weight: 300;
   margin-bottom: 8px;
 }
+/* Action buttons */
+.action-group img:first-child {
+  margin-right: 0.75rem;
+  margin-left: 0;
+}
