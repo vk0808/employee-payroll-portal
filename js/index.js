@@ -47,8 +47,8 @@ const createInnerHtml = () => {
         <td>${empPayrollData._salary}</td>
         <td>${stringifyDate(empPayrollData._startDate)}</td>
         <td class="action-group">
-          <img id ="${empPayrollData._id}" src="../assets/icons/delete-black-18dp.svg" alt="Delete" onClick="remove(this)">
-          <img id ="${empPayrollData._id}" src="../assets/icons/create-black-18dp.svg" alt="Edit" onClick="update(this)">
+          <img id ="${empPayrollData.id}" src="../assets/icons/delete-black-18dp.svg" alt="Delete" onClick="remove(this)">
+          <img id ="${empPayrollData.id}" src="../assets/icons/create-black-18dp.svg" alt="Edit" onClick="update(this)">
         </td>
       </tr>`
       ;
@@ -69,13 +69,13 @@ const getDepartmentHtml = (data) => {
 // function to remove an existing employee
 const remove = (node) => {
   // check if the element is present in array
-  let employeeData = empPayrollList.find(empData => empData._id == node.id);
+  let employeeData = empPayrollList.find(empData => empData.id == node.id);
   // if not exit and do nothing
   if (!employeeData) {
     return;
   }
   // get index of the employee, splice, set it to local storage and then update the table
-  const index = empPayrollList.map(empData => empData._id).indexOf(employeeData._id);
+  const index = empPayrollList.map(empData => empData.id).indexOf(employeeData.id);
   empPayrollList.splice(index, 1);
   localStorage.setItem('EmployeePayrollList', JSON.stringify(empPayrollList));
   document.querySelector('.emp-count').textContent = empPayrollList.length;
@@ -85,7 +85,7 @@ const remove = (node) => {
 // function to update an existing employee
 const update = (node) => {
   // check if the element is present in array
-  let employeeData = empPayrollList.find(empData => empData._id == node.id);
+  let employeeData = empPayrollList.find(empData => empData.id == node.id);
   // if not exit and do nothing
   if (!employeeData) {
     return;

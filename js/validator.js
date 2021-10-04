@@ -9,7 +9,7 @@ let employeePayrollObject = {
   _salary: '',
   _startDate: '',
   _note: '',
-  _id: '',
+  id: '',
   _profilePic: ''
 };
 
@@ -32,7 +32,7 @@ function validateName() {
       return;
     }
     try {
-      (new EmployeePayrollData()).name = name.value;
+      checkName(name.value);
       setTextValue('.text-error', "");
     } catch (e) {
       setTextValue('.text-error', e);
@@ -44,7 +44,7 @@ function validateName() {
 function checkDate() {
   try {
     let date = day.value + " " + month.value + " " + year.value;
-    (new EmployeePayrollData()).startDate = new Date(Date.parse(date));
+    checkStartDate(new Date(Date.parse(date)));
     setTextValue('.date-error', "");
   } catch (e) {
     setTextValue('.date-error', e);
@@ -66,6 +66,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   salaryOutput();
   validateName();
   validateDate();
+  document.querySelector('#cancelButton').href = site_properties.home_page;
   checkForUpdate();
 });
 
@@ -85,6 +86,7 @@ const save = (event) => {
 
 // function to create employee object and store values by getting it from input fields  
 const setEmployeePayrollObject = () => {
+  if (!isUpdate) employeePayrollObject.id = createNewEmployeeID();
   employeePayrollObject._name = getInputValueById('#name');
   employeePayrollObject._profilePic = getSelectedValues('[name=profile]').pop();
   employeePayrollObject._gender = getSelectedValues('[name=gender]').pop();
@@ -126,14 +128,14 @@ const createAndUpdateStorage = () => {
   let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
   // check if present
   if (employeePayrollList) {
-    let empPayrollData = employeePayrollList.find(empData => empData._id == employeePayrollObject._id);
-    console.log(empPayrollData, employeePayrollList._id);
+    let empPayrollData = employeePayrollList.find(empData => empData.id == employeePayrollObject.id);
+    console.log(empPayrollData, employeePayrollList.id);
 
     if (!empPayrollData) {
-      employeePayrollList.push(createEmployeePayrollData());
+      employeePayrollList.push(employeePayrollObject);
     } else {
-      const index = employeePayrollList.map(empData => empData._id).indexOf(empPayrollData._id);
-      employeePayrollList.splice(index, 1, createEmployeePayrollData(empPayrollData._id));
+      const index = employeePayrollList.map(empData => empData.id).indexOf(empPayrollData.id);
+      employeePayrollList.splice(index, 1, employeePayrollObject);
       console.log(employeePayrollList)
     }
   } else { // else add to object
