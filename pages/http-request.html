@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REST</title>
+    <style>
+      .body {
+        margin: auto;
+      }
+      div {
+        border: 1px solid black;
+        background-color: lightblue;
+        padding: 50px;
+        width: 80%;
+        font-size: xx-large;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The Test service result</h1>
+    <div id="get_services"></div>
+    <div id="delete_services"></div>
+    <div id="post_services"></div>
+    <script src="../services/http_service.js"></script>
+    <script>
+      // different div
+      const getElem = document.querySelector("#get_services");
+      const deleteElem = document.querySelector("#delete_services");
+      const postElem = document.querySelector("#post_services");
+
+      // routes for different methods
+      const getURL = "http://127.0.0.1:3000/EmployeePayrollDB/1";
+      const deleteURL = " http://127.0.0.1:3000/EmployeePayrollDB/3";
+      const postURL = "http://127.0.0.1:3000/EmployeePayrollDB";
+
+      // function call: GET
+      makeServiceCall("GET", getURL, false)
+        .then((responseText) => {
+          getElem.textContent = "Get Employee data: " + responseText;
+        })
+        .catch(
+          (error) =>
+            (getElem.textContent = "GET Error Status: " + JSON.stringify(error))
+        );
+
+      // function call: DELETE
+      makeServiceCall("DELETE", deleteURL, false)
+        .then((responseText) => {
+          deleteElem.textContent = "Employee deleted :" + responseText;
+        })
+        .catch(
+          (error) =>
+            (deleteElem.textContent =
+              "Delete Error Status: " + JSON.stringify(error))
+        );
+
+      // variable to store data for post method
+      const empData = {
+        _name: "Surya Kumar",
+        _gender: "Male",
+        _department: ["HR", "Finance"],
+        _salary: "400000",
+        _startDate: "2 Aug 2021",
+        _note: "",
+        _id: new Date().getTime(),
+        _profilePic: "../assets/profile-images/Ellipse -2.png",
+      };
+      // function call: POST
+      makeServiceCall("POST", postURL, false, empData)
+        .then((responseText) => {
+          console.log(responseText);
+          postElem.textContent = "Employee added :" + responseText;
+        })
+        .catch(
+          (error) =>
+            (postElem.textContent =
+              "POST Error Status: " + JSON.stringify(console.error))
+        );
+    </script>
+  </body>
+</html>
