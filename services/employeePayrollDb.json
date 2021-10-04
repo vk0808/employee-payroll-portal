@@ -18,12 +18,12 @@
       "_name": "Bill Gates",
       "_gender": "Male",
       "_department": [
-        "Engineering"
+        "Engineer"
       ],
       "_salary": "500000",
-      "_startDate": "29 Oct 2019",
+      "_startDate": "2019-10-28T18:30:00.000Z",
       "_note": "Terrific Engineer",
-      "_profilePic": "../assets/profile-images/Ellipse -1.png"
+      "_profilePic": "../assets/profile-images/Ellipse -3.png"
     },
     {
       "_name": "Surya Kumar",
