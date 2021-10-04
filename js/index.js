@@ -3,21 +3,45 @@ let empPayrollList;
 
 // function to get employee data stored in local storage and parse it into JSON 
 const getDataFromLocalStorage = () => {
-  return localStorage.getItem('EmployeePayrollList') ?
+  empPayrollList = localStorage.getItem('EmployeePayrollList') ?
     JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+  processEmployeePayrollDataResponse();
+}
+
+// function to get employee data stored in JSON Server and parse it into JSON 
+const getDataFromJsonServer = () => {
+  makeServiceCall("GET", site_properties.server_url, false)
+    .then(responseText => {
+      empPayrollList = JSON.parse(responseText);
+      processEmployeePayrollDataResponse();
+    })
+    .catch(error => {
+      console.log("GET Error Status: " + JSON.stringify(error));
+      empPayrollList = [];
+      processEmployeePayrollDataResponse();
+    })
+}
+
+const processEmployeePayrollDataResponse = () => {
+  // update count
+  document.querySelector(".emp-count").textContent = empPayrollList.length;
+  // create row for each employee 
+  createInnerHtml();
+  // remove edit-emp value from local storage
+  localStorage.removeItem('edit-emp');
 }
 
 
 // add eventListener as the page loads
 window.addEventListener('DOMContentLoaded', (event) => {
-  // get data from local storage
-  empPayrollList = getDataFromLocalStorage();
-  // update count
-  document.querySelector('.emp-count').textContent = empPayrollList.length;
-  // create row for each employee 
-  createInnerHtml();
-
-  localStorage.removeItem("edit-emp");
+  if (site_properties.use_local_storage.match("true")) {
+    // get data from local storage
+    getDataFromLocalStorage();
+  }
+  else {
+    // get data from JSON Server
+    getDataFromJsonServer();
+  }
 });
 
 
