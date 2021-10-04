@@ -66,7 +66,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   salaryOutput();
   validateName();
   validateDate();
-  document.querySelector('#cancelButton').href = site_properties.home_page;
   checkForUpdate();
 });
 
@@ -86,7 +85,7 @@ const save = (event) => {
 
 // function to create employee object and store values by getting it from input fields  
 const setEmployeePayrollObject = () => {
-  if (!isUpdate) employeePayrollObject.id = createNewEmployeeID();
+  if (!isUpdate && site_properties.use_local_storage.match("true")) employeePayrollObject.id = createNewEmployeeID();
   employeePayrollObject._name = getInputValueById('#name');
   employeePayrollObject._profilePic = getSelectedValues('[name=profile]').pop();
   employeePayrollObject._gender = getSelectedValues('[name=gender]').pop();
@@ -220,14 +219,14 @@ const setSelectedValue = (propertyValue, value) => {
   });
 }
 
-// function to create new Employee data 
-const createEmployeePayrollData = (id) => {
-  let employeePayrollData = new EmployeePayrollData();
-  if (!id) employeePayrollData.id = createNewEmployeeID();
-  else employeePayrollData.id = id;
-  setEmployeePayrollData(employeePayrollData);
-  return employeePayrollData;
-}
+// // function to create new Employee data 
+// const createEmployeePayrollData = (id) => {
+//   let employeePayrollData = new EmployeePayrollData();
+//   if (!id) employeePayrollData.id = createNewEmployeeID();
+//   else employeePayrollData.id = id;
+//   setEmployeePayrollData(employeePayrollData);
+//   return employeePayrollData;
+// }
 
 // function to create new Employee id
 const createNewEmployeeID = () => {
@@ -237,24 +236,24 @@ const createNewEmployeeID = () => {
   return empId;
 }
 
-// function to set updated employee data to the array
-const setEmployeePayrollData = (employeePayrollData) => {
-  try {
-    employeePayrollData.name = employeePayrollObject._name;
-  } catch (e) {
-    setTextValue('.text-error', e);
-    throw e;
-  }
-  employeePayrollData.profilePic = employeePayrollObject._profilePic;
-  employeePayrollData.gender = employeePayrollObject._gender;
-  employeePayrollData.department = employeePayrollObject._department;
-  employeePayrollData.salary = employeePayrollObject._salary;
-  employeePayrollData.note = employeePayrollObject._note;
-  try {
-    employeePayrollData.startDate = new Date(Date.parse(employeePayrollObject._startDate));
-  } catch (e) {
-    setTextValue('.date-error', e);
-    throw e;
-  }
-  alert(employeePayrollData.toString());
-}
+// // function to set updated employee data to the array
+// const setEmployeePayrollData = (employeePayrollData) => {
+//   try {
+//     employeePayrollData.name = employeePayrollObject._name;
+//   } catch (e) {
+//     setTextValue('.text-error', e);
+//     throw e;
+//   }
+//   employeePayrollData.profilePic = employeePayrollObject._profilePic;
+//   employeePayrollData.gender = employeePayrollObject._gender;
+//   employeePayrollData.department = employeePayrollObject._department;
+//   employeePayrollData.salary = employeePayrollObject._salary;
+//   employeePayrollData.note = employeePayrollObject._note;
+//   try {
+//     employeePayrollData.startDate = new Date(Date.parse(employeePayrollObject._startDate));
+//   } catch (e) {
+//     setTextValue('.date-error', e);
+//     throw e;
+//   }
+//   alert(employeePayrollData.toString());
+// }
