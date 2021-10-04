@@ -23,12 +23,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 // function to create table and append it to the innerHTML 
 const createInnerHtml = () => {
-  if (empPayrollList.length == 0) return;
+  // check if length is zero
+  if (empPayrollList.length == 0) {
+    document.querySelector('#display').innerHTML = "";
+    return
+  };
   // column headings
   const headerHtml = "<tr><th></th><th>Name</th><th>Gender</th>" + "<th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th></tr>";
 
   // add table header 
   let innerHtml = `${headerHtml}`;
+
 
   // data row loop through JSON object
   for (let empPayrollData of empPayrollList) {
