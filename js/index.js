@@ -95,9 +95,7 @@ const remove = (node) => {
   // check if the element is present in array
   let employeeData = empPayrollList.find(empData => empData.id == node.id);
   // if not exit and do nothing
-  if (!employeeData) {
-    return;
-  }
+  if (!employeeData) return;
   // get index of the employee, splice, set it to local storage and then update the table
   const index = empPayrollList.map(empData => empData.id).indexOf(employeeData.id);
   empPayrollList.splice(index, 1);
