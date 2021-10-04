@@ -37,19 +37,6 @@
       "_note": "",
       "_profilePic": "../assets/profile-images/Ellipse -2.png",
       "id": 3
-    },
-    {
-      "_name": "Alex",
-      "_gender": "Male",
-      "_department": [
-        "Engineer",
-        "Others"
-      ],
-      "_salary": "400000",
-      "_startDate": "2021-09-11T18:30:00.000Z",
-      "_note": "",
-      "id": 4,
-      "_profilePic": "../assets/profile-images/Ellipse -3.png"
     }
   ]
 }
